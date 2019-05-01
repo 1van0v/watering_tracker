@@ -1,0 +1,38 @@
+.logo {
+  height: 10vh;
+  margin: 5px 20px;
+  min-height: 30px;
+  max-height: 50px;
+}
+
+md-card > img {
+  height: 4rem !important;
+  width: auto !important;
+  margin: 5px;
+}
+
+md-card.main-column {
+  max-width: 800px;
+  min-width: 300px;
+  width: 40vw;
+  padding: 5px;
+}
+
+.md-button.groupX {
+    font-size: 16px;
+    margin: 20px 0;
+    padding: 2px 10px 2px 10px;
+    color: rgb(49, 46, 46);
+    background-color: transparant;
+    text-transform: none;
+    font-weight: 400;
+    min-width:60px;
+}
+
+.md-button.left {
+    border-radius: 10px 0 0 10px;
+}
+
+.md-button.right {
+    border-radius: 0 10px 10px 0;
+}

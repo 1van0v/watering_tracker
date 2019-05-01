@@ -1,6 +1,15 @@
-var wateringTracker = angular.module("wateringTracker", []);
+var wateringTracker = angular.module("wateringTracker", ['ngMaterial']);
 
-wateringTracker.controller("wateringTrackerCtr", function($scope) {
-  $scope.wateringIcon = "//static1.squarespace.com/static/596830ffb11be19a5cc9e549/t/5970b2d4d7bdcebd7f5a46df/1500558043509/watering+icon";
-  $scope.message = "Watering Tracker App";
+wateringTracker.config(function($mdThemingProvider) {
+    $mdThemingProvider.theme("default")
+      .primaryPalette("light-green")
+      .accentPalette("amber");
+  })
+
+
+
+wateringTracker.controller("wateringTrackerCtr", function($scope, $http) {
+  $http.get("data.json").then((response) => {
+    $scope.plants = response.data;
+  })
 })

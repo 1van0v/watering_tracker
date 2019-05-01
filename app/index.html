@@ -5,17 +5,42 @@
   <title>Watering Tracker</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="app.css">
-  <link rel="icon"
-    href="{{wateringIcon}}">
+  <link rel="stylesheet" href="lib/angular-material/angular-material.css">
+  <link rel="stylesheet" href="lib/mdi/css/materialdesignicons.min.css" media="all">
+  <link rel="icon" href="assets/img/watering-tool.svg">
 </head>
 <body ng-controller="wateringTrackerCtr">
-
-  <h1>
-    <img src="{{wateringIcon}}" alt="logo">
-    {{ message }}
-  </h1>
-
+  <md-toolbar >
+    <div class="md-toolbar-tools" layout="row" layout-align="start center">
+      <a href="#">
+        <img src="assets/img/watering-tool.svg" class="logo">
+      </a>
+      <p>Watering Tracker</p>
+    </div>
+  </md-toolbar>
+  <md-content class="md-padding" layout="column" layout-align="start center">
+    <md-card class="main-column"
+      layout="row" layout-align="space-between center"
+      ng-repeat="plant in plants">
+      <img ng-src="{{plant.img}}" alt="plant">
+      <span>{{plant.name}}</span>
+      <section layout="row" layout-align="center center">
+        <md-button class="groupX left" arial-label="Water this plant">
+          <md-tooltip>Water {{plant.name}}</md-tooltip>
+          <md-icon md-svg-src="assets/img/watering-tool.svg"></md-icon>
+        </md-button>
+        <md-button class="groupX right">
+          <md-tooltip>Delete {{plant.name}} from the list</md-tooltip>
+          <md-icon md-svg-src="assets/img/delete.svg"></md-icon>
+        </md-button>
+      </section>
+    </md-card>
+  </md-content>
   <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-animate/angular-animate.js"></script>
+  <script src="lib/angular-aria/angular-aria.js"></script>
+  <script src="lib/angular-material/angular-material.js"></script>
+  
   <script src="app.js"></script>
 
 </body>
