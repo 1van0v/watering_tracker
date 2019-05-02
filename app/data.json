@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Aloe Vera",
+    "img": "assets\\img\\flowers\\8.svg",
+    "last_watering": "2019-02-05T10:40:00",
+    "status": "watered",
+    "watering_interval": 5
+  },
+  {
+    "name": "Parlor Palm",
+    "img": "assets\\img\\flowers\\1.svg",
+    "last_watering": "2019-02-05T10:40:00",
+    "status": "watered",
+    "watering_interval": 4
+  },
+  {
+    "name": "Calathea",
+    "img": "assets\\img\\flowers\\2.svg",
+    "last_watering": "2019-02-05T10:40:00",
+    "status": "watered",
+    "watering_interval": 5
+  },
+  {
+    "name": "Spider Plant",
+    "img": "assets\\img\\flowers\\3.svg",
+    "last_watering": "2019-02-05T10:40:00",
+    "status": "watered",
+    "watering_interval": 5
+  },
+  {
+    "name": "Peperomia",
+    "img": "assets\\img\\flowers\\4.svg",
+    "last_watering": "2019-02-05T10:40:00",
+    "status": "watered",
+    "watering_interval": 5
+  },
+  {
+    "name": "Fiddle Leaf Fig Tree",
+    "img": "assets\\img\\flowers\\9.svg",
+    "last_watering": "2019-02-05T10:40:00",
+    "status": "watered",
+    "watering_interval": 5
+  },
+  {
+    "name": "Snake Plant",
+    "img": "assets\\img\\flowers\\10.svg",
+    "last_watering": "2019-02-05T10:40:00",
+    "status": "watered",
+    "watering_interval": 5
+  },
+  {
+    "name": "Peace Lily",
+    "img": "assets\\img\\flowers\\7.svg",
+    "last_watering": "2019-02-05T10:40:00",
+    "status": "watered",
+    "watering_interval": 5
+  },
+  {
+    "name":"Peace Lily",
+    "img":"assets\\img\\flowers\\6.svg",
+    "last_watering":"2019-02-05T10:40:00",
+    "status": "watered",
+    "watering_interval":5
+  },
+  {
+    "name":"Philodendron",
+    "img":"assets\\img\\flowers\\5.svg",
+    "last_watering":"2019-02-05T10:40:00",
+    "status": "watered",
+    "watering_interval":5
+  }
+]

@@ -1,0 +1,17 @@
+<md-card class="main-column"
+  layout="row" layout-align="space-between center">
+  <img ng-src="{{$ctrl.plant.img}}" alt="plant">
+  <span>{{$ctrl.plant.name}}</span>
+  <timer last-watering="$ctrl.plant.last_watering"
+    interval="$ctrl.plant.watering_interval"></timer>
+  <section layout="row" layout-align="center center">
+    <md-button class="groupX left" arial-label="Water this plant">
+      <md-tooltip>Water {{$ctrl.plant.name}}</md-tooltip>
+      <md-icon md-svg-src="assets/img/watering-tool.svg"></md-icon>
+    </md-button>
+    <md-button class="groupX right">
+      <md-tooltip>Delete {{$ctrl.plant.name}} from the list</md-tooltip>
+      <md-icon md-svg-src="assets/img/delete.svg"></md-icon>
+    </md-button>
+  </section>
+</md-card>
