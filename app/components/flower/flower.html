@@ -1,8 +1,14 @@
 <md-card class="main-column"
   layout="row" layout-align="space-between center">
   <img ng-src="{{$ctrl.plant.img}}" alt="plant">
-  <span>{{$ctrl.plant.name}}</span>
-  <timer last-watering="$ctrl.plant.last_watering"
+  <div>
+    <div>{{$ctrl.plant.name}}</div>
+    <div ng-if="$ctrl.plant.status == 'withered'">
+      This plant is dead :(
+    </div>
+  </div>
+  <timer ng-if="$ctrl.plant.status !== 'withered'"
+    last-watering="$ctrl.plant.last_watering"
     interval="$ctrl.plant.watering_interval"></timer>
   <section layout="row" layout-align="center center">
     <md-button class="groupX left" arial-label="Water this plant">

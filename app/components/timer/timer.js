@@ -1,4 +1,4 @@
-function timerCtrl($interval) {
+function timerCtrl($interval, $scope) {
   var ctrl = this;
   ctrl.$onInit = function () {
     const interval = ctrl.interval * 60000;
@@ -10,7 +10,9 @@ function timerCtrl($interval) {
         ctrl.ttl--;
         return;
       }
+      ctrl.ttl = 0;
       $interval.cancel(ctrl.timer);
+      $scope.$emit("withered");
     }, 1000)
 
 };
