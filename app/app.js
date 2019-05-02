@@ -6,10 +6,8 @@ wateringTracker.config(function($mdThemingProvider) {
       .accentPalette("amber");
   })
 
-
-
 wateringTracker.controller("wateringTrackerCtr", function($scope, $http) {
   $http.get("data.json").then((response) => {
-    $scope.plants = response.data;
+    $scope.plants = response.data.map((item) => {item.last_watering = Date.now(); return item});
   })
 })
