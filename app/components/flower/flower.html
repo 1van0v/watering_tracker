@@ -11,7 +11,8 @@
     last-watering="$ctrl.plant.last_watering"
     interval="$ctrl.plant.watering_interval"></timer>
   <section layout="row" layout-align="center center">
-    <md-button class="groupX left" arial-label="Water this plant">
+    <md-button class="groupX left" arial-label="Water this plant"
+      ng-click="water()">
       <md-tooltip>Water {{$ctrl.plant.name}}</md-tooltip>
       <md-icon md-svg-src="assets/img/watering-tool.svg"></md-icon>
     </md-button>

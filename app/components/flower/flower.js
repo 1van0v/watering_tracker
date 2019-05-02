@@ -1,20 +1,21 @@
-function flowerCtrl($scope, flowersFactory, $mdToast) {
+function flowerCtrl($scope, updateItem, updateItem) {
   var ctrl = this;
 
   ctrl.$onInit = function() {
     function makeWithered() {
       ctrl.plant.status = "withered";
-      flowersFactory.database.$save(ctrl.plant)
-        .then(
-          $mdToast.show(
-            $mdToast.simple()
-            .textContent(ctrl.plant.name + " has been withered")
-            .position("top right")
-            .hideDelay(3000)
-          )
-        )
+      updateItem(ctrl.plant, "withered");
     }
     $scope.$on("withered", makeWithered);
+  }
+
+  $scope.water = function() {
+    var item = ctrl.plant;
+    if (item.status !== "withered") {
+      item.last_watering = Date.now();
+      updateItem(item, "watered");
+    }
+    
   }
 
 }

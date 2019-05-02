@@ -1,6 +1,6 @@
 function timerCtrl($interval, $scope) {
   var ctrl = this;
-  ctrl.$onInit = function () {
+  ctrl.$onChanges = function () {
     const interval = ctrl.interval * 60000;
     const lastWatering = new Date(ctrl.lastWatering).getTime();
     ctrl.ttl = Math.floor((lastWatering + interval - Date.now()) / 1000);

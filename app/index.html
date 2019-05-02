@@ -10,13 +10,18 @@
   <link rel="icon" href="assets/img/watering-tool.svg">
 </head>
 <body ng-controller="wateringTrackerCtr">
-  <md-toolbar >
+  <md-toolbar layout="row" layout-align="center">
     <div class="md-toolbar-tools" layout="row" layout-align="start center">
       <a href="#">
         <img src="assets/img/watering-tool.svg" class="logo">
       </a>
       <p>Watering Tracker</p>
     </div>
+    <md-button class="md-accent md-hue-6 md-raised"
+      ng-click="revive()">
+    Revive
+    <md-tooltip>Revive the withered plants</md-tooltips>
+    </md-button>
   </md-toolbar>
   <md-content class="md-padding" layout="column" layout-align="start center">
     <flower ng-repeat="plant in plants" plant="plant"></flower>
