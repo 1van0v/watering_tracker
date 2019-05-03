@@ -16,7 +16,8 @@
       <md-tooltip>Water {{$ctrl.plant.name}}</md-tooltip>
       <md-icon md-svg-src="assets/img/watering-tool.svg"></md-icon>
     </md-button>
-    <md-button class="groupX right">
+    <md-button class="groupX right"
+      ng-click="delete()">
       <md-tooltip>Delete {{$ctrl.plant.name}} from the list</md-tooltip>
       <md-icon md-svg-src="assets/img/delete.svg"></md-icon>
     </md-button>

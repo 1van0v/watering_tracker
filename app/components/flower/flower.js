@@ -1,4 +1,4 @@
-function flowerCtrl($scope, updateItem, updateItem) {
+function flowerCtrl($scope, updateItem, updateItem, flowersFactory, showToast, $mdDialog) {
   var ctrl = this;
 
   ctrl.$onInit = function() {
@@ -15,7 +15,22 @@ function flowerCtrl($scope, updateItem, updateItem) {
       item.last_watering = Date.now();
       updateItem(item, "watered");
     }
-    
+  }
+
+  
+
+  $scope.delete = function(ev) {
+    var item = ctrl.plant;
+    var confirm = $mdDialog.confirm()
+      .title("Would you like to delete " + item.name + "?")
+      .textContent("A deleted flower could not be restored.")
+      .targetEvent(ev)
+      .ok("Delete " + item.name)
+      .cancel("Cancel");
+    $mdDialog.show(confirm).then(function() {
+      flowersFactory.database.$remove(item)
+        .then(showToast(item, "deleted"))
+    })
   }
 
 }
