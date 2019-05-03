@@ -1,6 +1,95 @@
-var wateringTracker = angular.module("wateringTracker", []);
+var wateringTracker = angular.module("wateringTracker", ["ngMaterial", "firebase"]);
 
-wateringTracker.controller("wateringTrackerCtr", function($scope) {
-  $scope.wateringIcon = "//static1.squarespace.com/static/596830ffb11be19a5cc9e549/t/5970b2d4d7bdcebd7f5a46df/1500558043509/watering+icon";
-  $scope.message = "Watering Tracker App";
+wateringTracker.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme("default")
+    .primaryPalette("light-green")
+    .accentPalette("amber");
+});
+
+wateringTracker.factory("flowersFactory", function($http, $firebaseArray) {
+  var config = {
+    apiKey: "AIzaSyCzYjlewlCw0CK0DUQTd2j3LkeUj1EusjU",
+    authDomain: "iv-test-db.firebaseapp.com",
+    databaseURL: "https://iv-test-db.firebaseio.com",
+    projectId: "iv-test-db",
+    storageBucket: "iv-test-db.appspot.com",
+    messagingSenderId: "151360496041"
+  };
+
+  var firebaseRef = firebase.initializeApp(config).database().ref();
+  
+  return {
+   database : $firebaseArray(firebaseRef)
+  }
+});
+
+wateringTracker.factory("updateItem", function(flowersFactory, showToast) {
+  return function(item, action) {
+    flowersFactory.database.$save(item)
+      .then(
+        showToast(item, action)
+      )
+  }
 })
+
+wateringTracker.factory("showToast", function($mdToast) {
+  return function(item, action) {
+    $mdToast.show(
+      $mdToast.simple()
+      .textContent(item.name + " has been " + action)
+      .position("top right")
+      .hideDelay(3000)
+    )
+  }
+})
+
+wateringTracker.controller("wateringTrackerCtr", 
+  function($scope, updateItem, flowersFactory, $mdDialog) {
+  
+  $scope.plantStates = ["all", "watered", "withered"];
+  $scope.plantState = "all";
+  $scope.plants =  flowersFactory.database;
+  $scope.revive = function() {
+    $scope.plants.forEach((item) => {
+      if (item.status === "withered") {
+        item.watering_interval = Math.floor(Math.random() * (15 - 5) + 5)
+        item.status = "watered";
+        item.last_watering = Date.now();
+        updateItem(item, "revived");
+      }
+    })
+  }
+
+  $scope.showForm = function(ev) {
+    $mdDialog.show({
+      templateUrl: "components/add-new-plant/add-new-plant.html",
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+    })
+  };
+
+  $scope.filterPlants = function(item) {
+    if ($scope.plantState !== "all") {
+      return item.status === $scope.plantState;
+    }
+    return true;
+  }
+})
+
+wateringTracker.filter("filterPlants", function() {
+  return function(items, condition) {
+    var filtered = [];
+    if(condition === undefined || 
+        condition === "" || 
+        condition === "all"){
+      return items;
+    }
+    angular.forEach(items, function(item) {          
+      if(condition === item.status){
+        filtered.push(item);
+      }
+    });
+    return filtered;
+  };
+});

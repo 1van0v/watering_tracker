@@ -1,0 +1,44 @@
+<md-dialog id="addNewPlant" ng-controller="addPlantCtrl">
+  <form name="newPlant" ng-submit="addPlant()">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Add New Plant</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="cancel()">
+        <md-icon md-svg-src="assets/img/close.svg" aria-label="Close dialog"></md-icon>
+      </md-button>
+    </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div layout="row">
+        <md-input-container flex="70">
+          <label>Plant Name</label>
+          <input required name="plantName" ng-model="plant.name">
+          <div ng-messages="newPlant.plantName.$error" 
+            ng-if="newPlant.plantName.$invalid">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <md-input-container flex="30">
+          <label>Watering Interval</label>
+          <input name="wateringInterval" type="number"
+            min="1"
+            ng-model="plant.watering_interval" required>
+        </md-input-container>
+      </div>
+      <md-input-container class="md-block">
+        <label>Image URL</label>
+        <input type="url" required name="imageURL" ng-model="plant.img"/>
+        <div ng-messages="newPlant.imageURL.$error"
+          ng-if="newPlant.imageURL.$invalid">
+          Not valid URL
+        </div>
+      </md-input-container>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button class="md-raised md-primary" 
+        ng-disabled="{{newPlant.$invalid}}"
+        type="submit">Add</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

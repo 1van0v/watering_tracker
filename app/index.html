@@ -5,18 +5,60 @@
   <title>Watering Tracker</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="app.css">
-  <link rel="icon"
-    href="{{wateringIcon}}">
+  <link rel="stylesheet" href="lib/angular-material/angular-material.css">
+  <link rel="stylesheet" href="lib/mdi/css/materialdesignicons.min.css" media="all">
+  <link rel="icon" href="assets/img/watering-tool.svg">
 </head>
 <body ng-controller="wateringTrackerCtr">
+  <md-toolbar layout="row" layout-align="center">
+    <div class="md-toolbar-tools" layout="row" layout-align="start center">
+      <a href="#">
+        <img src="assets/img/watering-tool.svg" class="logo">
+      </a>
+      <p>Watering Tracker</p>
+    </div>
+    <div layout="row" layout-align="center">
+      <md-button class="md-accent md-hue-6 md-raised"
+        ng-click="showForm()">
+      Add New
+      <md-tooltip>Add a new plant</md-tooltips>
+      </md-button>
+      <md-button class="md-accent md-hue-6 md-raised"
+        ng-click="revive()">
+      Revive
+      <md-tooltip>Revive the withered plants</md-tooltips>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-content class="md-padding" layout="column" layout-align="start center">
+    <section layout="row" layout-align="center center">
+      <md-input-container>
+        <label>Filter plants by state</label>
+        <md-select ng-model="plantState">
+          <md-option ng-repeat="state in plantStates" ng-value="state" >
+            {{state}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+    </section>
+    <flower ng-repeat="plant in plants | filterPlants: plantState" plant="plant"></flower>
+  </md-content>
 
-  <h1>
-    <img src="{{wateringIcon}}" alt="logo">
-    {{ message }}
-  </h1>
+  <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-database.js"></script>
 
   <script src="lib/angular/angular.js"></script>
-  <script src="app.js"></script>
+  <script src="lib/angular-animate/angular-animate.js"></script>
+  <script src="lib/angular-aria/angular-aria.js"></script>
+  <script src="lib/angular-material/angular-material.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
 
+  <script src="app.js"></script>
+  <script src="components/flower/flower.js"></script>
+  <script src="components/timer/timer.js"></script>
+  <script src="components/timer/clock/clock.js"></script>
+  <script src="components/add-new-plant/add-new-plant.js"></script>
+
+  
 </body>
 </html>
