@@ -31,7 +31,17 @@
     </div>
   </md-toolbar>
   <md-content class="md-padding" layout="column" layout-align="start center">
-    <flower ng-repeat="plant in plants" plant="plant"></flower>
+    <section layout="row" layout-align="center center">
+      <md-input-container>
+        <label>Filter plants by state</label>
+        <md-select ng-model="plantState">
+          <md-option ng-repeat="state in plantStates" ng-value="state" >
+            {{state}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+    </section>
+    <flower ng-repeat="plant in plants | filterPlants: plantState" plant="plant"></flower>
   </md-content>
 
   <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-app.js"></script>

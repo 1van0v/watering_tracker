@@ -18,6 +18,10 @@ md-card.main-column {
   padding: 5px;
 }
 
+.main-column .plant-details {
+  margin: 5px 10px;
+}
+
 .md-button.groupX {
     font-size: 16px;
     margin: 20px 0;
@@ -59,3 +63,4 @@ md-card.main-column {
 #addNewPlant md-dialog-content {
   padding: 0 10px;
 }
+

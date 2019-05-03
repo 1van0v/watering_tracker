@@ -9,12 +9,21 @@ function flowerCtrl($scope, updateItem, updateItem, flowersFactory, showToast, $
     $scope.$on("withered", makeWithered);
   }
 
-  $scope.water = function() {
+  $scope.water = function(ev) {
     var item = ctrl.plant;
     if (item.status !== "withered") {
       item.last_watering = Date.now();
       updateItem(item, "watered");
+      return;
     }
+    $mdDialog.show(
+      $mdDialog.alert()
+        .clickOutsideToClose(true)
+        .title('Cannot water ' + item.name)
+        .textContent('There is no reason to water a withered plant')
+        .ok('Got it!')
+        .targetEvent(ev)
+    );
   }
 
   
