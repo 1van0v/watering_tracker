@@ -23,22 +23,28 @@ wateringTracker.factory("flowersFactory", function($http, $firebaseArray) {
   }
 });
 
-wateringTracker.factory("updateItem", function(flowersFactory, $mdToast) {
+wateringTracker.factory("updateItem", function(flowersFactory, showToast) {
   return function(item, action) {
     flowersFactory.database.$save(item)
       .then(
-        $mdToast.show(
-          $mdToast.simple()
-          .textContent(item.name + " has been " + action)
-          .position("top right")
-          .hideDelay(3000)
-        )
+        showToast(item, action)
       )
   }
 })
 
+wateringTracker.factory("showToast", function($mdToast) {
+  return function(item, action) {
+    $mdToast.show(
+      $mdToast.simple()
+      .textContent(item.name + " has been " + action)
+      .position("top right")
+      .hideDelay(3000)
+    )
+  }
+})
+
 wateringTracker.controller("wateringTrackerCtr", 
-  function($scope, updateItem, flowersFactory) {
+  function($scope, updateItem, flowersFactory, $mdDialog) {
 
   $scope.plants =  flowersFactory.database;
   $scope.revive = function() {
@@ -50,5 +56,13 @@ wateringTracker.controller("wateringTrackerCtr",
       }
     })
   }
-  
+
+  $scope.showForm = function(ev) {
+    $mdDialog.show({
+      templateUrl: "components/add-new-plant/add-new-plant.html",
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+    })
+  };
 })

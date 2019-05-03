@@ -51,3 +51,11 @@ md-card.main-column {
     opacity: 0;
   }
 }
+
+#addNewPlant {
+  width: 30vw;
+}
+
+#addNewPlant md-dialog-content {
+  padding: 0 10px;
+}
