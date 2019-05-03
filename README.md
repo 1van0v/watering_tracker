@@ -1,4 +1,4 @@
-##Watering Tracker
+## Watering Tracker
 
 In order to run this project:
 1. ```npm install```
