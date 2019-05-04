@@ -68,13 +68,6 @@ wateringTracker.controller("wateringTrackerCtr",
       clickOutsideToClose:true,
     })
   };
-
-  $scope.filterPlants = function(item) {
-    if ($scope.plantState !== "all") {
-      return item.status === $scope.plantState;
-    }
-    return true;
-  }
 })
 
 wateringTracker.filter("filterPlants", function() {
