@@ -13,7 +13,7 @@ module.exports = function(config) {
       'app/lib/angular-animate/angular-animate.js',
       'app/lib/angular-material/angular-material.js',
       'node_modules/mockfirebase/browser/mockfirebase.js',
-      'app/lib/angularfire.min.js',
+      'app/lib/angularfire/dist/angularfire.min.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'app/*.js',
       'app/components/**/*.js',
@@ -81,7 +81,6 @@ module.exports = function(config) {
       'karma-firefox-launcher',
       'karma-jasmine',
       'karma-coverage',
-      'karma-phantomjs-launcher',
       'karma-firebase'
     ]
 

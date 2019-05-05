@@ -30,16 +30,14 @@
     "karma-firefox-launcher": "^1.1.0",
     "karma-jasmine": "^2.0.1",
     "karma-coverage": "^1.1.2",
-    "karma-phantomjs-launcher": "^1.0.4",
     "mockfirebase": "^0.12.0",
-    "phantomjs-prebuilt": "^2.1.16",
     "protractor": "^5.4.1"
   },
   "scripts": {
     "postinstall": "npm run copy-libs",
     "update-deps": "npm update",
     "postupdate-deps": "npm run copy-libs",
-    "copy-libs": "cpx \"node_modules/{firebase,mdi,angular,angular-*,angularfire/dist/angularfire.min.js}/**/*\" app/lib -C",
+    "copy-libs": "cpx \"node_modules/{{firebase,mdi,angular,angular-*}/**/*,angularfire/dist/angularfire.min.js}\" app/lib -C",
     "prestart": "npm install",
     "start": "http-server -a localhost -p 8000 -c-1 ./app",
     "pretest": "npm install",
