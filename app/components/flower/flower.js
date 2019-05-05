@@ -26,8 +26,6 @@ function flowerCtrl($scope, updateItem, updateItem, flowersFactory, showToast, $
     );
   }
 
-  
-
   $scope.delete = function(ev) {
     var item = ctrl.plant;
     var confirm = $mdDialog.confirm()
@@ -41,9 +39,7 @@ function flowerCtrl($scope, updateItem, updateItem, flowersFactory, showToast, $
         .then(showToast(item, "deleted"))
     })
   }
-
 }
-
 
 angular.module("wateringTracker")
   .component("flower", {

@@ -1,6 +1,5 @@
 describe("Testing clock controller", function() {
   var $componentController;
-  var scope = {};
   var ctrl;
 
   function getClock(seconds) {
