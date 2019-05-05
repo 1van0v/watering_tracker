@@ -52,7 +52,7 @@ wateringTracker.controller("wateringTrackerCtr",
   $scope.revive = function() {
     $scope.plants.forEach((item) => {
       if (item.status === "withered") {
-        item.watering_interval = Math.floor(Math.random() * (15 - 5) + 5)
+        item.watering_interval = Math.floor(Math.random() * (15 - 5) + 5) * 60000;
         item.status = "watered";
         item.last_watering = Date.now();
         updateItem(item, "revived");
