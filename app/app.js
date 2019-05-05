@@ -17,7 +17,7 @@ wateringTracker.factory("flowersFactory", function($http, $firebaseArray) {
   };
 
   var firebaseRef = firebase.initializeApp(config).database().ref();
-  
+
   return {
    database : $firebaseArray(firebaseRef)
   }
@@ -43,9 +43,9 @@ wateringTracker.factory("showToast", function($mdToast) {
   }
 })
 
-wateringTracker.controller("wateringTrackerCtr", 
+wateringTracker.controller("wateringTrackerCtr",
   function($scope, updateItem, flowersFactory, $mdDialog) {
-  
+
   $scope.plantStates = ["all", "watered", "withered"];
   $scope.plantState = "all";
   $scope.plants =  flowersFactory.database;
@@ -73,12 +73,12 @@ wateringTracker.controller("wateringTrackerCtr",
 wateringTracker.filter("filterPlants", function() {
   return function(items, condition) {
     var filtered = [];
-    if(condition === undefined || 
-        condition === "" || 
+    if(condition === undefined ||
+        condition === "" ||
         condition === "all"){
       return items;
     }
-    angular.forEach(items, function(item) {          
+    angular.forEach(items, function(item) {
       if(condition === item.status){
         filtered.push(item);
       }

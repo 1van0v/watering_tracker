@@ -1,8 +1,32 @@
 function clockCtrl() {
   var ctrl = this;
+
   ctrl.$onChanges = function() {
-    ctrl.seconds = String(ctrl.time % 60).padStart(2, "0");
-    ctrl.minutes = String(Math.floor(ctrl.time / 60)).padStart(2, "0");
+    ctrl.displayTime(ctrl.time);
+  }
+
+  ctrl.displayTime = function(seconds) {
+    var checkedSeconds = checkNumber(seconds);
+    ctrl.seconds = parseSeconds(checkedSeconds);
+    ctrl.minutes = parseMinutes(checkedSeconds);
+  }
+
+  function parseSeconds(seconds) {
+    return addZeros(seconds % 60);
+  }
+
+  function parseMinutes(seconds) {
+    return addZeros(Math.floor(seconds / 60));
+  }
+  function checkNumber(seconds) {
+    if (+seconds !== seconds) {
+      return 0;
+    }
+    return seconds;
+  }
+
+  function addZeros(num) {
+    return String(num).padStart(2, "0");
   }
 }
 
