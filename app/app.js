@@ -37,8 +37,9 @@ wateringTracker.factory("showToast", function($mdToast) {
     $mdToast.show(
       $mdToast.simple()
       .textContent(item.name + " has been " + action)
-      .position("top right")
+      .position("bottom right")
       .hideDelay(3000)
+      .parent(document.getElementById("toastContainer"))
     )
   }
 })
