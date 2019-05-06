@@ -17,7 +17,6 @@ describe("Testing timer controller", function() {
     $interval = _$interval_;
     scope = $rootScope.$new();
     $componentController = _$componentController_;
-    // spyOn($scope, "$interval").and.callThrough();
     spyOn(scope, "$emit");
   }));
 
