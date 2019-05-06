@@ -16,6 +16,7 @@ angular.module("wateringTracker")
     $scope.addPlant = function() {
       var item = $scope.plant;
       item.status = "watered";
+      item.watering_interval *= 60000;
       item.last_watering = Date.now();
       flowersFactory.database.$add(item)
         .then(function() {
@@ -24,4 +25,3 @@ angular.module("wateringTracker")
         });
     }
   })
-

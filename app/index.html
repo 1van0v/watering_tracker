@@ -43,22 +43,20 @@
     </section>
     <flower ng-repeat="plant in plants | filterPlants: plantState" plant="plant"></flower>
   </md-content>
-
-  <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-database.js"></script>
+  <div id="toastContainer"></div>
+  <script src="lib/firebase/firebase-app.js"></script>
+  <script src="lib/firebase/firebase-database.js"></script>
 
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular-animate/angular-animate.js"></script>
   <script src="lib/angular-aria/angular-aria.js"></script>
   <script src="lib/angular-material/angular-material.js"></script>
-  <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+  <script src="lib/angularfire/dist/angularfire.min.js"></script>
 
   <script src="app.js"></script>
   <script src="components/flower/flower.js"></script>
   <script src="components/timer/timer.js"></script>
   <script src="components/timer/clock/clock.js"></script>
   <script src="components/add-new-plant/add-new-plant.js"></script>
-
-  
 </body>
 </html>

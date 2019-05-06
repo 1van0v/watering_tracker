@@ -17,7 +17,7 @@ wateringTracker.factory("flowersFactory", function($http, $firebaseArray) {
   };
 
   var firebaseRef = firebase.initializeApp(config).database().ref();
-  
+
   return {
    database : $firebaseArray(firebaseRef)
   }
@@ -37,22 +37,23 @@ wateringTracker.factory("showToast", function($mdToast) {
     $mdToast.show(
       $mdToast.simple()
       .textContent(item.name + " has been " + action)
-      .position("top right")
+      .position("bottom right")
       .hideDelay(3000)
+      .parent(document.getElementById("toastContainer"))
     )
   }
 })
 
-wateringTracker.controller("wateringTrackerCtr", 
+wateringTracker.controller("wateringTrackerCtr",
   function($scope, updateItem, flowersFactory, $mdDialog) {
-  
+
   $scope.plantStates = ["all", "watered", "withered"];
   $scope.plantState = "all";
   $scope.plants =  flowersFactory.database;
   $scope.revive = function() {
     $scope.plants.forEach((item) => {
       if (item.status === "withered") {
-        item.watering_interval = Math.floor(Math.random() * (15 - 5) + 5)
+        item.watering_interval = Math.floor(Math.random() * (15 - 5) + 5) * 60000;
         item.status = "watered";
         item.last_watering = Date.now();
         updateItem(item, "revived");
@@ -68,24 +69,17 @@ wateringTracker.controller("wateringTrackerCtr",
       clickOutsideToClose:true,
     })
   };
-
-  $scope.filterPlants = function(item) {
-    if ($scope.plantState !== "all") {
-      return item.status === $scope.plantState;
-    }
-    return true;
-  }
 })
 
 wateringTracker.filter("filterPlants", function() {
   return function(items, condition) {
     var filtered = [];
-    if(condition === undefined || 
-        condition === "" || 
+    if(condition === undefined ||
+        condition === "" ||
         condition === "all"){
       return items;
     }
-    angular.forEach(items, function(item) {          
+    angular.forEach(items, function(item) {
       if(condition === item.status){
         filtered.push(item);
       }

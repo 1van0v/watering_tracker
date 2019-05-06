@@ -41,21 +41,6 @@ md-card.main-column {
     border-radius: 0 10px 10px 0;
 }
 
-.blinking-column {
-  animation-duration: 1s;
-  animation-name: blinking;
-  animation-iteration-count: infinite;
-}
-
-@keyframes blinking {
-  from {
-    opacity: 100;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
 #addNewPlant {
   width: 30vw;
 }
@@ -64,3 +49,11 @@ md-card.main-column {
   padding: 0 10px;
 }
 
+#toastContainer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  widht: 100%;
+  /* overflow: hidden; */
+}

@@ -13,6 +13,9 @@
     "angular-loader": "^1.7.5",
     "angular-material": "^1.1.18",
     "angular-route": "^1.7.5",
+    "angularfire": "^2.3.0",
+    "firebase": "^5.11.1",
+    "firebase-app": "0.0.1",
     "mdi": "^2.2.43"
   },
   "devDependencies": {
@@ -21,16 +24,20 @@
     "http-server": "^0.11.1",
     "jasmine-core": "^3.3.0",
     "karma": "^3.1.1",
+    "karma-browserify": "^6.0.0",
     "karma-chrome-launcher": "^2.2.0",
+    "karma-firebase": "^0.2.0",
     "karma-firefox-launcher": "^1.1.0",
-    "karma-jasmine": "^1.1.2",
+    "karma-jasmine": "^2.0.1",
+    "karma-coverage": "^1.1.2",
+    "mockfirebase": "^0.12.0",
     "protractor": "^5.4.1"
   },
   "scripts": {
     "postinstall": "npm run copy-libs",
     "update-deps": "npm update",
     "postupdate-deps": "npm run copy-libs",
-    "copy-libs": "cpx \"node_modules/{mdi,angular,angular-*,html5-boilerplate/dist}/**/*\" app/lib -C",
+    "copy-libs": "cpx \"node_modules/{{firebase,mdi,angular,angular-*}/**/*,angularfire/dist/angularfire.min.js}\" app/lib -C",
     "prestart": "npm install",
     "start": "http-server -a localhost -p 8000 -c-1 ./app",
     "pretest": "npm install",
