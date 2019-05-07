@@ -23,22 +23,22 @@ md-card.main-column {
 }
 
 .md-button.groupX {
-    font-size: 16px;
-    margin: 20px 0;
-    padding: 2px 10px 2px 10px;
-    color: rgb(49, 46, 46);
-    background-color: transparant;
-    text-transform: none;
-    font-weight: 400;
-    min-width:60px;
+  font-size: 16px;
+  margin: 20px 0;
+  padding: 2px 10px 2px 10px;
+  color: rgb(49, 46, 46);
+  background-color: transparant;
+  text-transform: none;
+  font-weight: 400;
+  min-width:60px;
 }
 
 .md-button.left {
-    border-radius: 10px 0 0 10px;
+  border-radius: 10px 0 0 10px;
 }
 
 .md-button.right {
-    border-radius: 0 10px 10px 0;
+  border-radius: 0 10px 10px 0;
 }
 
 #addNewPlant {
@@ -55,5 +55,4 @@ md-card.main-column {
   right: 20px;
   z-index: 1000;
   widht: 100%;
-  /* overflow: hidden; */
 }
