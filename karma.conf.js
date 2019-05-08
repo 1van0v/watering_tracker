@@ -1,4 +1,4 @@
-//jshint strict: false
+process.env.CHROME_BIN = require('puppeteer').executablePath();
 module.exports = function(config) {
   config.set({
 
@@ -31,15 +31,16 @@ module.exports = function(config) {
 
     frameworks: ['jasmine'],
 
-    browsers: ['Chrome'],
+    browsers: ['ChromeHeadless'],
 
     reporters: ['progress', 'coverage'],
 
     preprocessors: {
+      'app/**/*.html': ['ng-html2js'],
       'app/app.js': ['coverage'],
-      'app/components/**/*[^.spec].js': ['coverage'] 
-    }, 
-    
+      'app/components/**/*.js': ['coverage']
+    },
+
     coverageReporter: {
       type: 'html',
       dir: 'coverage'
@@ -76,9 +77,14 @@ module.exports = function(config) {
       }
     },
 
+    ngHtml2JsPreprocessor: {
+      moduleName: 'htmlTemplates'
+    },
+
     plugins: [
       'karma-chrome-launcher',
       'karma-firefox-launcher',
+      'karma-ng-html2js-preprocessor',
       'karma-jasmine',
       'karma-coverage',
       'karma-firebase'
