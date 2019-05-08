@@ -16,7 +16,11 @@ wateringTracker.factory("flowersFactory", function($http, $firebaseArray) {
     messagingSenderId: "151360496041"
   };
 
-  var firebaseRef = firebase.initializeApp(config).database().ref();
+  //prevent firebase initialization of additional instances
+
+  var firebaseRef = firebase.apps.length ?
+    firebase.database().ref() :
+    firebase.initializeApp(config).database().ref();
 
   return {
    database : $firebaseArray(firebaseRef)

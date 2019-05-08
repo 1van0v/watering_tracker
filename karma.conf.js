@@ -38,7 +38,7 @@ module.exports = function(config) {
     preprocessors: {
       'app/**/*.html': ['ng-html2js'],
       'app/app.js': ['coverage'],
-      'app/components/**/*.js': ['coverage']
+      'app/components/**/*[^spec].js': ['coverage'],
     },
 
     coverageReporter: {
